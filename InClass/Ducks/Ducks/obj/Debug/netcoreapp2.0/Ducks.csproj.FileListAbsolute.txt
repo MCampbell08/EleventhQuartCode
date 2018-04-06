@@ -1,0 +1,11 @@
+C:\EleventhQuartCode\InClass\Ducks\Ducks\bin\Debug\netcoreapp2.0\Ducks.deps.json
+C:\EleventhQuartCode\InClass\Ducks\Ducks\bin\Debug\netcoreapp2.0\Ducks.runtimeconfig.json
+C:\EleventhQuartCode\InClass\Ducks\Ducks\bin\Debug\netcoreapp2.0\Ducks.runtimeconfig.dev.json
+C:\EleventhQuartCode\InClass\Ducks\Ducks\bin\Debug\netcoreapp2.0\Ducks.dll
+C:\EleventhQuartCode\InClass\Ducks\Ducks\bin\Debug\netcoreapp2.0\Ducks.pdb
+C:\EleventhQuartCode\InClass\Ducks\Ducks\obj\Debug\netcoreapp2.0\Ducks.csprojResolveAssemblyReference.cache
+C:\EleventhQuartCode\InClass\Ducks\Ducks\obj\Debug\netcoreapp2.0\Ducks.csproj.CoreCompileInputs.cache
+C:\EleventhQuartCode\InClass\Ducks\Ducks\obj\Debug\netcoreapp2.0\Ducks.AssemblyInfoInputs.cache
+C:\EleventhQuartCode\InClass\Ducks\Ducks\obj\Debug\netcoreapp2.0\Ducks.AssemblyInfo.cs
+C:\EleventhQuartCode\InClass\Ducks\Ducks\obj\Debug\netcoreapp2.0\Ducks.dll
+C:\EleventhQuartCode\InClass\Ducks\Ducks\obj\Debug\netcoreapp2.0\Ducks.pdb
