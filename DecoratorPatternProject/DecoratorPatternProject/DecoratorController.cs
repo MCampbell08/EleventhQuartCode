@@ -8,7 +8,11 @@ namespace DecoratorPatternProject
     {
         public void Run()
         {
+            FileBaseComponent fileBaseComponent = new FileBaseComponent();
 
+            SignatureDecorator signatureDecorator = new SignatureDecorator(new ShiftCharUpDecorator(fileBaseComponent), "Mason");
+            signatureDecorator.Write();
         }
     }
 }
+    

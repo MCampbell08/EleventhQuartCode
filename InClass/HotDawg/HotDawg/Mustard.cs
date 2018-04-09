@@ -6,10 +6,11 @@ namespace HotDawg
 {
     public class Mustard : Condiment
     {
-        public Mustard(Dawg dawg) : base(HotDawg = dawg) { }
+        Dawg dawg;
+        public Mustard(Dawg dawg) : base(dawg) { this.dawg = dawg; }
         public override double Cost()
         {
-            return 0.05 + HotDawg.Cost();
+            return 0.05 + dawg.Cost();
         }
     }
 }

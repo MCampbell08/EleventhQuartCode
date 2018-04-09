@@ -4,9 +4,9 @@ using System.Text;
 
 namespace HotDawg
 {
-    public class MysteryDawg
+    public class MysteryDawg : Dawg
     {
-        public double Cost()
+        public override double Cost()
         {
             return 2.0;
         }

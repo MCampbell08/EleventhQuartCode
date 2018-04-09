@@ -6,11 +6,12 @@ namespace HotDawg
 {
     public class Ketchup : Condiment
     {
-        public Ketchup(Dawg dawg) : base(HotDawg = dawg) { }
+        Dawg dawg;
+        public Ketchup(Dawg dawg) : base(dawg) { this.dawg = dawg; }
 
         public override double Cost()
         {
-            return 0.10 + HotDawg.Cost();
+            return 0.10 + dawg.Cost();
         }
     }
 }

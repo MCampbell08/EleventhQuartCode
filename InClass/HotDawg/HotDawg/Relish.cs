@@ -6,11 +6,12 @@ namespace HotDawg
 {
      public class Relish : Condiment
     {
-        public Relish(Dawg dawg) : base(HotDawg = dawg) { }
+        Dawg dawg;
+        public Relish(Dawg dawg) : base(dawg) { this.dawg = dawg; }
         
         public override double Cost()
         {
-            return .20 + HotDawg.Cost();
+            return .20 + dawg.Cost();
         }
     }
 }

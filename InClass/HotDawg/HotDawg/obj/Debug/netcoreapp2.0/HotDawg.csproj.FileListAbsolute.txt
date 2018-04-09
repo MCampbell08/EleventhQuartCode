@@ -9,3 +9,14 @@ C:\EleventhQuartCode\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.AssemblyInf
 C:\EleventhQuartCode\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.AssemblyInfo.cs
 C:\EleventhQuartCode\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.dll
 C:\EleventhQuartCode\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.pdb
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\bin\Debug\netcoreapp2.0\HotDawg.deps.json
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\bin\Debug\netcoreapp2.0\HotDawg.runtimeconfig.json
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\bin\Debug\netcoreapp2.0\HotDawg.runtimeconfig.dev.json
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\bin\Debug\netcoreapp2.0\HotDawg.dll
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\bin\Debug\netcoreapp2.0\HotDawg.pdb
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.csprojResolveAssemblyReference.cache
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.csproj.CoreCompileInputs.cache
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.AssemblyInfoInputs.cache
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.AssemblyInfo.cs
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.dll
+C:\EleventhQuartCode\InClass\HotDawg\HotDawg\obj\Debug\netcoreapp2.0\HotDawg.pdb

@@ -664,7 +664,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\WaffleDefender\\.nuget\\packages\\": {},
+    "C:\\Users\\waffl\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -673,17 +673,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\EleventhQuartCode\\HotDawg\\HotDawg\\HotDawg.csproj",
+      "projectUniqueName": "C:\\EleventhQuartCode\\InClass\\HotDawg\\HotDawg\\HotDawg.csproj",
       "projectName": "HotDawg",
-      "projectPath": "C:\\EleventhQuartCode\\HotDawg\\HotDawg\\HotDawg.csproj",
-      "packagesPath": "C:\\Users\\WaffleDefender\\.nuget\\packages\\",
-      "outputPath": "C:\\EleventhQuartCode\\HotDawg\\HotDawg\\obj\\",
+      "projectPath": "C:\\EleventhQuartCode\\InClass\\HotDawg\\HotDawg\\HotDawg.csproj",
+      "packagesPath": "C:\\Users\\waffl\\.nuget\\packages\\",
+      "outputPath": "C:\\EleventhQuartCode\\InClass\\HotDawg\\HotDawg\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\WaffleDefender\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\waffl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

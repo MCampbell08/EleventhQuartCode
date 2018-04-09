@@ -1,0 +1,11 @@
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\bin\Debug\netcoreapp2.0\DecoratorPatternProject.deps.json
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\bin\Debug\netcoreapp2.0\DecoratorPatternProject.runtimeconfig.json
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\bin\Debug\netcoreapp2.0\DecoratorPatternProject.runtimeconfig.dev.json
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\bin\Debug\netcoreapp2.0\DecoratorPatternProject.dll
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\bin\Debug\netcoreapp2.0\DecoratorPatternProject.pdb
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\obj\Debug\netcoreapp2.0\DecoratorPatternProject.csprojResolveAssemblyReference.cache
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\obj\Debug\netcoreapp2.0\DecoratorPatternProject.csproj.CoreCompileInputs.cache
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\obj\Debug\netcoreapp2.0\DecoratorPatternProject.AssemblyInfoInputs.cache
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\obj\Debug\netcoreapp2.0\DecoratorPatternProject.AssemblyInfo.cs
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\obj\Debug\netcoreapp2.0\DecoratorPatternProject.dll
+C:\EleventhQuartCode\DecoratorPatternProject\DecoratorPatternProject\obj\Debug\netcoreapp2.0\DecoratorPatternProject.pdb

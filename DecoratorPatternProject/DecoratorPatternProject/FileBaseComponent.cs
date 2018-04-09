@@ -4,8 +4,11 @@ using System.Text;
 
 namespace DecoratorPatternProject
 {
-    public interface IBasicFileWriter : IDisposable
+    public class FileBaseComponent : FileWriteComponent
     {
-        void Write(string data);
+        public override void Write()
+        {
+
+        }
     }
 }
