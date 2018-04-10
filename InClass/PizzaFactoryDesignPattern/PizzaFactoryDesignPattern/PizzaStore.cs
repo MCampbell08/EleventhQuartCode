@@ -4,13 +4,13 @@ using System.Text;
 
 namespace PizzaFactoryDesignPattern
 {
-    public class PizzaStore
+    public abstract class PizzaStore
     {
         private PizzaFactory pizzaFactory = new PizzaFactory();
         public Pizza Order(string type)
         {
             //create(instantiate)
-            Pizza p = pizzaFactory.CreatePizza(type);
+            Pizza p = CreatePizza(type);
             
             p.Bake();
             p.Box();
@@ -18,5 +18,6 @@ namespace PizzaFactoryDesignPattern
 
             return p;
         }
+        public abstract Pizza CreatePizza(string type);
     }
 }
