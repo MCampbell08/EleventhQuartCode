@@ -7,7 +7,7 @@ namespace DecoratorPatternProject
 {
     public abstract class FileWriteComponent
     {
-        protected static string fileLoc = "C:\\EleventhQuartCode\\DecoratorPatternProject\\DecoratorPatternProject\\testFile.txt";
+        protected static string fileLoc = ".\\testFile.txt";
         public abstract void Write();
     }
 }
