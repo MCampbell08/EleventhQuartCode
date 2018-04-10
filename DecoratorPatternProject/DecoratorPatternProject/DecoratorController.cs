@@ -19,8 +19,13 @@ namespace DecoratorPatternProject
              If we were to wrap the opposite way, the SignatureDecorator's "Write()" method will be called first and then the ShiftCharUpDecorator's "Write()" method will follow. 
              Of course this would just shift all the characters in the signature up a character but essentially that would happen.
              */
-            SignatureDecorator signatureDecorator = new SignatureDecorator(new ShiftCharUpDecorator(fileBaseComponent), "Mason");
-            signatureDecorator.Write();
+
+
+            //SignatureDecorator signatureDecorator = new SignatureDecorator(new ShiftCharUpDecorator(fileBaseComponent), "Mason");
+            //signatureDecorator.Write();
+
+            ConverterDecorator converterDecorator = new ConverterDecorator(fileBaseComponent);
+            converterDecorator.Write();
         }
     }
 }
