@@ -1,0 +1,15 @@
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\bin\Debug\GUI_CommandPattern.exe.config
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\bin\Debug\GUI_CommandPattern.exe
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\bin\Debug\GUI_CommandPattern.pdb
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern.csprojResolveAssemblyReference.cache
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\MainWindow.g.cs
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\App.g.cs
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern_MarkupCompile.cache
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern_MarkupCompile.lref
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\MainWindow.baml
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern.g.resources
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern.Properties.Resources.resources
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern.csproj.GenerateResource.Cache
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern.csproj.CoreCompileInputs.cache
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern.exe
+C:\EleventhQuartCode\GUI_CommandPattern\GUI_CommandPattern\obj\Debug\GUI_CommandPattern.pdb

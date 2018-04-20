@@ -21,8 +21,8 @@ namespace DecoratorPatternProject
              */
 
 
-            //SignatureDecorator signatureDecorator = new SignatureDecorator(new ShiftCharUpDecorator(fileBaseComponent), "Mason");
-            //signatureDecorator.Write();
+            SignatureDecorator signatureDecorator = new SignatureDecorator(new ShiftCharUpDecorator(fileBaseComponent), "Mason");
+            signatureDecorator.Write();
 
             ConverterDecorator converterDecorator = new ConverterDecorator(fileBaseComponent);
             converterDecorator.Write();
