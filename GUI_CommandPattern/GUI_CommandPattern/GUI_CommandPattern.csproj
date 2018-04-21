@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ElementChangeColor.cs" />
     <Compile Include="Commands\ElementMoveDown.cs" />
     <Compile Include="Commands\ElementMoveLeft.cs" />
     <Compile Include="Commands\ElementMoveRight.cs" />

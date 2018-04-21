@@ -8,14 +8,21 @@
         Title="MainWindow" Height="350" Width="525"
         KeyDown="Window_KeyDown">
     <Grid>
-        <TextBlock Name="textBlock" Text="WASD to move Label. 'Undo' button goes back a step." Height="25" Width="300" TextAlignment="Center" Margin="108.5,0,108.5,269"></TextBlock>
-        <Button Name="undoButton" Content="Undo" Height="30" Width="40" Margin="10,260,10,10"
+        <TextBlock Name="titleTextBlock" Text="WASD to move Label. 'Undo' button goes back a step. 'Change' changes the color." Height="25" Width="450" TextAlignment="Center" Margin="10,0,10,269"></TextBlock>
+        <Button Name="undoButton" Content="Undo" Height="30" Width="40" Margin="10,260,300,10"
                 Click="UndoButton_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
-
-        <Canvas>
+        <Button Name="changeColorButton" Content="Change" Height="30" Width="45" Margin="241,260,171,10"
+                Click="ChangeColorButton_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Button>
+        <TextBlock Name="colorTextBlock" Text="RGB Color: " Height="20" Width="60" 
+                   TextAlignment="Center" Margin="294,253,103,0"></TextBlock>
+        <TextBox Name="redColor" Height="20" Width="35" Margin="376,253,90,0" Text="0"></TextBox>
+        <TextBox Name="blueColor" Height="20" Width="35" Margin="365,253,0,0" Text="0"></TextBox>
+        <TextBox Name="greenColor" Height="20" Width="35" Margin="448,253,0,0" Text="0"></TextBox>
+        <Canvas Height="220" Width="450" Margin="10,10,10,30">
             <Label Name="labelElement" Content="05" Height="50" Width="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-               Margin="233.5, 134.5,233.5,134.5" ></Label>
+               Margin="233.5, 134.5,233.5,134.5"></Label>
         </Canvas>
     </Grid>
 </Window>

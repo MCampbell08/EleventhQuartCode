@@ -43,5 +43,31 @@ namespace GUI_CommandPattern
         {
             guiController.UndoRecentGUICommand();
         }
+        private void ChangeColorButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Int32.TryParse(redColor.Text, out int red))
+            {
+                if (red > 255)
+                    red = 255;
+                else if (red < 0)
+                    red = 0;
+            }
+            if (Int32.TryParse(greenColor.Text, out int green))
+            {
+                if (green > 255)
+                    green = 255;
+                else if (green < 0)
+                    green = 0;
+            }
+            if (Int32.TryParse(blueColor.Text, out int blue))
+            {
+                if (blue > 255)
+                    blue = 255;
+                else if (blue < 0)
+                    blue = 0;
+            }
+            
+            guiController.ExecuteGUICommand(new ElementChangeColor(classLabelElement, red.ToString(), green.ToString(), blue.ToString()));
+        }
     }
 }
