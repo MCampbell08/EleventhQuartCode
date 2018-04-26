@@ -1,0 +1,7 @@
+C:\EleventhQuartCode\InClass\PSight_IteratorListDemo\PSight_IteratorListDemo\bin\Debug\PSight_IteratorDemo.exe.config
+C:\EleventhQuartCode\InClass\PSight_IteratorListDemo\PSight_IteratorListDemo\bin\Debug\PSight_IteratorDemo.exe
+C:\EleventhQuartCode\InClass\PSight_IteratorListDemo\PSight_IteratorListDemo\bin\Debug\PSight_IteratorDemo.pdb
+C:\EleventhQuartCode\InClass\PSight_IteratorListDemo\PSight_IteratorListDemo\obj\Debug\PSight_IteratorDemo.csprojResolveAssemblyReference.cache
+C:\EleventhQuartCode\InClass\PSight_IteratorListDemo\PSight_IteratorListDemo\obj\Debug\PSight_IteratorDemo.csproj.CoreCompileInputs.cache
+C:\EleventhQuartCode\InClass\PSight_IteratorListDemo\PSight_IteratorListDemo\obj\Debug\PSight_IteratorDemo.exe
+C:\EleventhQuartCode\InClass\PSight_IteratorListDemo\PSight_IteratorListDemo\obj\Debug\PSight_IteratorDemo.pdb
