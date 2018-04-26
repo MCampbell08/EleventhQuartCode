@@ -16,13 +16,17 @@ namespace GUI_IteratorPattern.IteratorModels
             this.list = list;
         }
 
-        public T Current => throw new NotImplementedException();
+        public T Current {
+            get => Current;
+            set => list.ElementAt(index);
+        }
 
         public bool MoveNext()
         {
             if (index < list.Count)
             {
                 Current = list.ElementAt(index++);
+                return true;
             }
             return false;
         }
