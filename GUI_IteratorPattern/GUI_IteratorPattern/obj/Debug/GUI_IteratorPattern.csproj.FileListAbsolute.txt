@@ -12,3 +12,4 @@ C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_Itera
 C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.csproj.CoreCompileInputs.cache
 C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.exe
 C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.pdb
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.csprojResolveAssemblyReference.cache
