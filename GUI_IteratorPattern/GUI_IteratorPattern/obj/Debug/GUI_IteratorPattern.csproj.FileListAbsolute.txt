@@ -1,0 +1,14 @@
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\bin\Debug\GUI_IteratorPattern.exe.config
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\bin\Debug\GUI_IteratorPattern.exe
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\bin\Debug\GUI_IteratorPattern.pdb
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\MainWindow.g.cs
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\App.g.cs
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern_MarkupCompile.cache
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern_MarkupCompile.lref
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\MainWindow.baml
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.g.resources
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.Properties.Resources.resources
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.csproj.GenerateResource.Cache
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.csproj.CoreCompileInputs.cache
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.exe
+C:\EleventhQuartCode\GUI_IteratorPattern\GUI_IteratorPattern\obj\Debug\GUI_IteratorPattern.pdb
