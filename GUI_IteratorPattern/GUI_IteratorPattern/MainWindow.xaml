@@ -11,8 +11,28 @@
                MaxWidth="300" MaxHeight="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                Margin="50,10,50,575"></Label>
         <!--Add sections and subsections at a time with inputs and then a button to store it all.-->
-        <Label Name="categoryLabel" Content="Category:" FontSize="20" Height="40" Width="100"
+        <Label Name="sectionLabel" Content="Section:" FontSize="20" Height="40" Width="100"
                MaxHeight="40" MaxWidth="100" Margin="10,10,300,400"/>
-        <!--<TextBox Name="categoryInput" />-->
+        <Label Name="subsectionLabel" Content="SubSection:" FontSize="20" Height="40" Width="150"
+               MaxHeight="40" MaxWidth="150" Margin="10,200,300,400"/>
+        <Label Name="questionLabel" Content="Question:" FontSize="20" Height="40" Width="150"
+               MaxHeight="40" MaxWidth="150" Margin="10,310,10,300"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox Name="sectionInput" FontSize="20" Height="40" Width="250"
+                 MaxHeight="40" MaxWidth="250" Margin="300,10,10,400"
+                 TextAlignment="Center"/>
+        <TextBox Name="subsectionInput" FontSize="20" Height="40" Width="250"
+                 MaxHeight="40" MaxWidth="250" Margin="300,200,10,400"
+                 TextAlignment="Center"/>
+        <TextBox Name="questionInput" FontSize="20" Height="200" Width="250"
+                 MaxHeight="100" MaxWidth="250" Margin="10,400,10,100"
+                 TextWrapping="Wrap"  />
+
+        <Button Name="addSectionButton" Height="35" Width="100" Margin="150,590,10,0"
+                Content="Add Section" Click="AddSectionButton_Click"></Button>
+        <Button Name="addSubSectionButton" Height="35" Width="100" Margin="360,590,10,0"
+                Content="Add SubSection" Click="AddSubSectionButton_Click"></Button>
+        <Button Name="addQuestionButton" Height="35" Width="100" Margin="560,590,0,0"
+                Content="Add Question" Click="AddQuestionButton_Click"></Button>
     </Grid>
 </Window>
