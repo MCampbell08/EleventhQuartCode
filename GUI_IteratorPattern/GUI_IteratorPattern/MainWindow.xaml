@@ -5,13 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_IteratorPattern"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="700">
+        Title="MainWindow" Height="700" Width="700"
+        ResizeMode="NoResize">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Label Name="titleLabel" Content="Questionnaire" FontSize="24" Width="300" Height="50"
                MaxWidth="300" MaxHeight="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               Margin="50,10,50,575"></Label>
-        <!--Add sections and subsections at a time with inputs and then a button to store it all.-->
-        <Label Name="sectionLabel" Content="Section:" FontSize="20" Height="40" Width="100"
+               Margin="50,10,50,575" Grid.ColumnSpan="2"></Label>
+        <Label Name="sectionLabel" Margin="10,10,10,450" Height="50" Width="250" Grid.Column="0" Content="Sections" FontSize="24" HorizontalContentAlignment="Center"></Label>
+        <Label Name="questionLabel" Margin="10,10,10,450" Height="50" Width="250" Grid.Column="1" Content="Questions" FontSize="24" HorizontalContentAlignment="Center"></Label>
+        <ListBox Name="sectionListBox" Grid.Column="0" Height="400" Width="300" MaxHeight="400" MaxWidth="300" Margin="10, 75, 10, 10" MouseDoubleClick="SectionTextBlock_MouseDoubleClick"></ListBox>
+        <ListBox Name="questionListBox" Grid.Column="1" Height="400" Width="300" MaxHeight="400" MaxWidth="300" Margin="10, 75, 10, 10" ></ListBox>
+        <Button Name="undoSectionCall" Height="50" Width="50" Content="Back" FontSize="20"
+                Margin="10,10,0,550" Click="UndoSectionCall_Click"></Button>
+
+        <TextBox Name="insertComponentTextBox" Height="50" Width="300" Margin="10,550,10,10"></TextBox>
+        <Button Name="addSectionButton" Height="50" Width="130" Grid.Column="1"
+                Margin="10,550,150,10" Click="AddSectionButton_Click" Content="Add Section" FontSize="20"></Button>
+        <Button Name="addQuestionButton" Height="50" Width="130" Grid.Column="1"
+                Margin="150,550,10,10" Click="AddQuestionButton_Click" Content="Add Question" FontSize="20"></Button>
+            <!--Add sections and subsections at a time with inputs and then a button to store it all.-->
+        <!--<Label Name="sectionLabel" Content="Section:" FontSize="20" Height="40" Width="100"
                MaxHeight="40" MaxWidth="100" Margin="10,10,300,400"/>
         <Label Name="subsectionLabel" Content="SubSection:" FontSize="20" Height="40" Width="150"
                MaxHeight="40" MaxWidth="150" Margin="10,200,300,400"/>
@@ -43,7 +60,9 @@
                 <TextBlock Name="textBlockInDisplay" Background="Beige" Grid.Row="0"></TextBlock>
                 <Button Name="buttonInDisplay" Background="Beige" Grid.Row="1" Height="50" Width="50" Content="" Click="ButtonInDisplay_Click"></Button>
             </Grid>
-        </Popup>
+        </Popup>-->
+        <Button Name="takeAssessmentButton" Height="50" Width="130" Content="Take Quiz" Margin="200,0,10,600"
+                Grid.Column="1" MaxHeight="50" MaxWidth="130" Click="TakeAssessmentButton_Click"></Button>
     </Grid>
     
     <!--SWITCH GUI AROUND TO HAVE TO BOXES!-->

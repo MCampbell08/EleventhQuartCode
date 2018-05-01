@@ -20,67 +20,93 @@ namespace GUI_IteratorPattern
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Questionnaire questionnaire;
+        public Questionnaire questionnaire;
         private QuestionSection questionSections;
-        private QuestionSubSections questionSubSections;
+        private QuestionComponent currentComponent;
+        private List<QuestionComponent> sectionHistory;
 
         public MainWindow()
         {
             InitializeComponent();
+            CreateSampleQuestionnaire();
+
         }
         
         private void CreateSampleQuestionnaire()
         {
             InitializeQuestionModels();
-            GenerateSubSections();
             GenerateSections();
             questionnaire.Sections.Add(questionSections);
-
+            questionnaire.Print(sectionListBox, questionListBox);
         }
         private void GenerateSections()
         {
-            questionSubSections.Questions.Add(new QuestionItem( "General Knowledge", "Outside", "What color is the sky?"));
-            questionSubSections.Questions.Add(new QuestionItem( "General Knowledge", "Deep Thought", "If a tree falls in a forest and no one is around to hear it, does it make a sound?"));
+            questionSections.Items.Add(new QuestionItem("What color is the sky?"));
+            questionSections.Items.Add(new QuestionItem("If a tree falls in a forest and no one is around to hear it, does it make a sound?"));
         }
-        private void GenerateSubSections()
-        {
-            questionSections.SubSections.Add(questionSubSections);
-        }
-
         private void InitializeQuestionModels()
         {
-            questionnaire = new Questionnaire() { Sections = new List<QuestionComponent>() };
-            questionSections = new QuestionSection(){ SubSections = new List<QuestionComponent>() };
-            questionSubSections = new QuestionSubSections(){ Questions = new List<QuestionComponent>() } ;
+            questionnaire = new Questionnaire() { Sections = new List<QuestionComponent>(), Content = "Questionnaire" };
+            questionSections = new QuestionSection("General Knowledge"){ Items = new List<QuestionComponent>() };
+            currentComponent = questionnaire;
+            sectionHistory = new List<QuestionComponent>();
         }
-        private void AddSectionButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (sectionInput.Text != "")
-            {
 
+        private void SectionTextBlock_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (sectionListBox.SelectedItem != null) {
+                foreach (QuestionComponent component in currentComponent.Items)
+                {
+                    if (component.Content == sectionListBox.SelectedItem.ToString())
+                    {
+                        sectionHistory.Add(currentComponent);
+                        currentComponent = component;
+                    }
+                }
+                RefreshWindow();
             }
         }
 
-        private void AddSubSectionButton_Click(object sender, RoutedEventArgs e)
+        private void UndoSectionCall_Click(object sender, RoutedEventArgs e)
         {
+            if (sectionHistory.Count != 0)
+            {
+                currentComponent = sectionHistory.Last();
+                sectionHistory.Remove(sectionHistory.Last());
 
+                RefreshWindow();
+            }
         }
 
         private void AddQuestionButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (insertComponentTextBox.Text != "")
+            {
+                currentComponent.Items.Add(new QuestionItem(insertComponentTextBox.Text));
+                RefreshWindow();
+            }
         }
 
-        private void DisplaySampleButton_Click(object sender, RoutedEventArgs e)
+        private void AddSectionButton_Click(object sender, RoutedEventArgs e)
         {
-            CreateSampleQuestionnaire();
-            popUpWindow.IsOpen = true;
-            new QuestionPrinter().PrintQuestionItems(questionnaire, textBlockInDisplay);
+            if (insertComponentTextBox.Text != "") {
+                currentComponent.Items.Add(new QuestionSection(insertComponentTextBox.Text));
+                RefreshWindow();
+            }
+        }
+        
+        private void RefreshWindow()
+        {
+            questionListBox.Items.Clear();
+            sectionListBox.Items.Clear();
+            currentComponent.Print(sectionListBox, questionListBox);
+            sectionLabel.Content = currentComponent.Content.ToString();
         }
 
-        private void ButtonInDisplay_Click(object sender, RoutedEventArgs e)
+        private void TakeAssessmentButton_Click(object sender, RoutedEventArgs e)
         {
-
+            QuizWindow window = new QuizWindow(this);
+            window.Show();
         }
     }
 }

@@ -8,25 +8,22 @@ namespace GUI_IteratorPattern
 {
     public class QuestionItem : QuestionComponent
     {
-        private string question;
-        private string section;
-        private string subSection;
+        private string content;
+        private List<QuestionComponent> items;
 
-        public QuestionItem(string section, string subSection, string question)
+        public QuestionItem(string content)
         {
-            Section = section;
-            SubSection = subSection;
-            Question = question;
+            Content = content;
         }
 
-        public string Question { get => question; set => question = value; }
-        public string Section { get => section; set => section = value; }
-        public string SubSection { get => subSection; set => subSection = value; }
+        public override string Content { get => content; set => content = value; }
+        public override List<QuestionComponent> Items { get => null; set => items = value; }
 
         public override IEnumerator<QuestionComponent> CreateIterator() => new NullIterator<QuestionComponent>();
+        
         public override string ToString()
         {
-            return $"Section : {Section} | SubSection : {SubSection} | Question : {Question}";
+            return $"{Content}";
         }
     }
 }

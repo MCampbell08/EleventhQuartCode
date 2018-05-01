@@ -9,16 +9,20 @@ namespace GUI_IteratorPattern
 {
     public abstract class QuestionComponent
     {
-        public void Print(TextBlock textBlock)
+        public void Print(ListBox sectionBox, ListBox questionBox)
         {
             IEnumerator<QuestionComponent> enumerator = CreateIterator();
             while (enumerator.MoveNext())
             {
                 if(enumerator.Current is QuestionItem)
-                    textBlock.Text += enumerator.Current.ToString() + "\n";
-                enumerator.Current.Print(textBlock);
+                    questionBox.Items.Add(enumerator.Current.ToString());
+                else if (enumerator.Current is QuestionSection)
+                    sectionBox.Items.Add(enumerator.Current.ToString());
             }
         }
+        public abstract string Content { get; set; }
         public abstract IEnumerator<QuestionComponent> CreateIterator();
+        public abstract override string ToString();
+        public abstract List<QuestionComponent> Items { get; set; }
     }
 }
