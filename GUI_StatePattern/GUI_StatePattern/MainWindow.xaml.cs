@@ -21,26 +21,37 @@ namespace GUI_StatePattern
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const double INTERTVAL = 3000;
+        private const double INTERTVAL = 1000;
         private Timer timer = new Timer(INTERTVAL);
+        StoplightMachine stoplightMachine = new StoplightMachine();
         public MainWindow()
         {
             InitializeComponent();
             timer.Elapsed += OnTimedEvent;
             timer.Enabled = true;
+            timer.Start();
+            stoplightMachine.State = stoplightMachine.StoplightGreen;
         }
         public void OnTimedEvent(object source, ElapsedEventArgs e)
         {
-            if(timer.Interval >= INTERTVAL)
+            if (stoplightMachine.State == stoplightMachine.StoplightGreen)
             {
-
+                stoplightMachine.State = stoplightMachine.StoplightYellow;
+                yellowLight.Fill = new SolidColorBrush(Colors.Yellow);
+                greenLight.Fill = new SolidColorBrush(Colors.DarkGreen);
             }
-        }
-
-        public enum LightState{
-            GREEN,
-            YELLOW,
-            RED
+            else if (stoplightMachine.State == stoplightMachine.StoplightYellow)
+            {
+                stoplightMachine.State = stoplightMachine.StoplightRed;
+                redLight.Fill = new SolidColorBrush(Colors.Red);
+                yellowLight.Fill = new SolidColorBrush(Colors.DarkKhaki);
+            }
+            else if (stoplightMachine.State == stoplightMachine.StoplightRed)
+            {
+                stoplightMachine.State = stoplightMachine.StoplightGreen;
+                greenLight.Fill = new SolidColorBrush(Colors.Green);
+                redLight.Fill = new SolidColorBrush(Colors.DarkRed);
+            }
         }
     }
 }
