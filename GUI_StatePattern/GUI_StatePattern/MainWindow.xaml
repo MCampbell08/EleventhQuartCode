@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Rectangle Name="stopLightBase" />
+        <Rectangle Name="stopLightBase" Fill="Black" Height="250" Width="100"/>
+        <Ellipse Name="redLight" Height="75" Width="75" Margin="10,10,10,165" Fill="DarkRed"/>
+        <Ellipse Name="yellowLight" Height="75" Width="75" Margin="10,10,10,10" Fill="DarkKhaki"/>
+        <Ellipse Name="greenLight" Height="75" Width="75" Margin="10,165,10,10" Fill="DarkGreen"/>
     </Grid>
 </Window>
