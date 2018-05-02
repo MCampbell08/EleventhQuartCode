@@ -28,10 +28,7 @@ namespace GUI_StatePattern
         public MainWindow()
         {
             InitializeComponent();
-            timer.Interval = TimeSpan.FromMilliseconds(INTERVAL);
-            timer.Tick += OnTimedEvent;
-            timer.IsEnabled = true;
-            timer.Start();
+            StartResetTimer();
             stoplightMachine.State = stoplightMachine.StoplightGreen;
         }
         public void OnTimedEvent(object source, EventArgs e)
@@ -72,6 +69,14 @@ namespace GUI_StatePattern
             {
                 stoplightMachine.State.TurnLightGreen(greenLight, redLight);
             }
+        }
+        private void StartResetTimer()
+        {
+            timer.Stop();
+            timer.Interval = TimeSpan.FromMilliseconds(INTERVAL);
+            timer.Tick += OnTimedEvent;
+            timer.IsEnabled = true;
+            timer.Start();
         }
     }
 }
