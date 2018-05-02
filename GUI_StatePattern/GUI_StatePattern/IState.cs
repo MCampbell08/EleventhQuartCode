@@ -9,8 +9,8 @@ namespace GUI_StatePattern
 {
     public interface IState
     {
-        void TurnLightGreen(Ellipse ellipse);
-        void TurnLightYellow(Ellipse ellipse);
-        void TurnLightRed(Ellipse ellipse);
+        void TurnLightGreen(Ellipse ellipse, Ellipse prevEllipse);
+        void TurnLightYellow(Ellipse ellipse, Ellipse prevEllipse);
+        void TurnLightRed(Ellipse ellipse, Ellipse prevEllipse);
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace GUI_StatePattern
@@ -16,20 +17,21 @@ namespace GUI_StatePattern
             this.stoplightMachine = stoplightMachine;
         }
 
-        public void TurnLightGreen(Ellipse ellipse)
+        public void TurnLightGreen(Ellipse ellipse, Ellipse prevEllipse)
         {
-            Console.WriteLine("Stoplight can't turn green if it is green.");
+            Console.WriteLine("Nope");
         }
 
-        public void TurnLightRed(Ellipse ellipse)
+        public void TurnLightRed(Ellipse ellipse, Ellipse prevEllipse)
         {
-            Console.WriteLine("Stoplight can't turn red if it is green.");
+            Console.WriteLine("Nope");
         }
 
-        public void TurnLightYellow(Ellipse ellipse)
+        public void TurnLightYellow(Ellipse ellipse, Ellipse prevEllipse)
         {
+            ellipse.Fill = Brushes.Yellow;
+            prevEllipse.Fill = Brushes.DarkGreen;
             stoplightMachine.State = stoplightMachine.StoplightYellow;
-            Console.WriteLine("Stoplight has turned yellow.");
         }
     }
 }

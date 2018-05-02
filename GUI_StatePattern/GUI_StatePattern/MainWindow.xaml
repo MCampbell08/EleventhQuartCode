@@ -11,5 +11,8 @@
         <Ellipse Name="redLight" Height="75" Width="75" Margin="10,10,10,165" Fill="DarkRed"/>
         <Ellipse Name="yellowLight" Height="75" Width="75" Margin="10,10,10,10" Fill="DarkKhaki"/>
         <Ellipse Name="greenLight" Height="75" Width="75" Margin="10,165,10,10" Fill="DarkGreen"/>
+        <Button Name="redLightButton" Height="30" Width="80" Content="Turn Green" Margin="200,10,10,165" Click="ChangeLightButton_Click"/>
+        <Button Name="yellowLightButton" Height="30" Width="80" Content="Turn Red" Margin="200,10,10,10" Click="ChangeLightButton_Click"/>
+        <Button Name="greenLightButton" Height="30" Width="80" Content="Turn Yellow" Margin="200,165,10,10" Click="ChangeLightButton_Click"/>
     </Grid>
 </Window>
