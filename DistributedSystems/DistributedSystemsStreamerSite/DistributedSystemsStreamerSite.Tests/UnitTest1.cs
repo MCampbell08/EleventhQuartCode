@@ -9,6 +9,7 @@ namespace DistributedSystemsStreamerSite.Tests
         [TestMethod]
         public void TestMethod1()
         {
+
         }
     }
 }

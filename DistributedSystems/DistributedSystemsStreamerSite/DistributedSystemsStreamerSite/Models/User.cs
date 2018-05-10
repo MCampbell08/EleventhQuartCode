@@ -5,7 +5,7 @@ using System.Web;
 
 namespace DistributedSystemsStreamerSite.Models
 {
-    public class Streamer
+    public class User
     {
         public int Id { get; set; }
 
@@ -16,6 +16,5 @@ namespace DistributedSystemsStreamerSite.Models
         public int PageViewCount { get; set; }
 
         public string Name { get; set; }
-
     }
 }
