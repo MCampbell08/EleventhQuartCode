@@ -16,5 +16,7 @@ namespace DistributedSystemsStreamerSite.Models
         public int PageViewCount { get; set; }
 
         public string Name { get; set; }
+
+        public List<Video> Videos { get; set; }
     }
 }

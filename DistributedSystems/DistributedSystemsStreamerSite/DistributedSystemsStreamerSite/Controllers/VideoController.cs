@@ -10,53 +10,64 @@ namespace DistributedSystemsStreamerSite.Controllers
 {
     public class VideoController : ApiController
     {
-        static List<User> streamers = new List<User>();
-        // GET api/streamer
+        static List<Video> videos = new List<Video>();
 
-        public IEnumerable<User> Get()
+        public VideoController(List<Video> newVideos)
         {
-            return streamers;
+            videos = newVideos;
         }
 
-        // GET api/streamer/5
-        public User Get(int id)
+        // GET api/video
+        public IEnumerable<Video> Get()
         {
-            User streamer = streamers.Where(x => x.Id == id) as User;
-
-            return streamer ?? null;
+            return videos;
         }
 
-        // POST api/streamer
-        public void Post([FromBody]User streamer)
+        // GET api/video/{id}
+        public Video Get(int id)
         {
-            streamers.Add(streamer);
+            Video video = videos.Where(x => x.Id == id) as Video;
+
+            return video ?? null;
         }
 
-        // PUT api/streamer/5
-        public void Put(int id, [FromBody]User streamer)
+        // GET api/video/user/{userId}
+        public IEnumerable<Video> GetByUserId(int userId)
         {
-            User temp = Get(id);
+            List<Video> tempVideos = videos.Where(x => x.UserId == userId) as List<Video>;
+
+            return tempVideos;
+        }
+
+        // POST api/video
+        public void Post([FromBody] Video video)
+        {
+            videos.Add(video);
+        }
+
+        //PUT api/video/{id}
+        public void Put(int id, [FromBody] Video video)
+        {
+            Video temp = Get(id);
 
             if (temp == null)
             {
-                throw new ArgumentException("No existing streamer.");
+                throw new ArgumentException("No exisitng video.");
             }
 
-            UpdateUser(temp, streamer);
+            UpdateVideo(temp, video);
         }
 
-        // DELETE api/streamer/5
+        //DELETE api/video/{id}
         public void Delete(int id)
         {
-            streamers.Remove(Get(id));
+            videos.Remove(Get(id));
         }
 
-        private void UpdateUser(User existingUser, User newUser)
+        private static void UpdateVideo(Video temp, Video video)
         {
-            existingUser.FollowerCount = newUser.FollowerCount;
-            existingUser.SubscriberCount = newUser.SubscriberCount;
-            existingUser.PageViewCount = newUser.PageViewCount;
-            existingUser.Name = newUser.Name;
+            temp.Path = video.Path;
+            temp.UserId = video.UserId;
         }
     }
 }

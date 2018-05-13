@@ -10,29 +10,42 @@ namespace DistributedSystemsStreamerSite.Controllers
 {
     public class UserController : ApiController
     {
-        static List<User> streamers = new List<User>();
-        // GET api/streamer
-
-        public IEnumerable<User> Get()
+        static List<User> users = new List<User>();
+        
+        public UserController(List<User> newUsers)
         {
-            return streamers;
+            users = newUsers;
         }
 
-        // GET api/streamer/5
+        // GET api/user
+        public IEnumerable<User> Get()
+        {
+            return users;
+        }
+
+        // GET api/user/{id}
         public User Get(int id)
         {
-            User streamer = streamers.Where(x => x.Id == id) as User;
+            User streamer = users.Where(x => x.Id == id) as User;
 
             return streamer ?? null;
         }
 
-        // POST api/streamer
-        public void Post([FromBody]User streamer)
+        // GET api/user/{id}/videos
+        public IEnumerable<Video> GetVideos(int id)
         {
-            streamers.Add(streamer);
+            User user = Get(id);
+
+            return user.Videos;
         }
 
-        // PUT api/streamer/5
+        // POST api/user
+        public void Post([FromBody]User streamer)
+        {
+            users.Add(streamer);
+        }
+
+        // PUT api/user/{id}
         public void Put(int id, [FromBody]User streamer)
         {
             User temp = Get(id);
@@ -45,10 +58,10 @@ namespace DistributedSystemsStreamerSite.Controllers
             UpdateUser(temp, streamer);
         }
 
-        // DELETE api/streamer/5
+        // DELETE api/user/{id}
         public void Delete(int id)
         {
-            streamers.Remove(Get(id));
+            users.Remove(Get(id));
         }
 
         private void UpdateUser(User existingUser, User newUser)
