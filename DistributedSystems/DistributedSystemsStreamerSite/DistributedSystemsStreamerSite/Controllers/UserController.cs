@@ -12,6 +12,11 @@ namespace DistributedSystemsStreamerSite.Controllers
     {
         static List<User> users = new List<User>();
         
+        public UserController()
+        {
+
+        }
+
         public UserController(List<User> newUsers)
         {
             users = newUsers;
@@ -26,7 +31,7 @@ namespace DistributedSystemsStreamerSite.Controllers
         // GET api/user/{id}
         public User Get(int id)
         {
-            User streamer = users.Where(x => x.Id == id) as User;
+            User streamer = users.Single(x => x.Id == id);
 
             return streamer ?? null;
         }

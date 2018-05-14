@@ -12,6 +12,10 @@ namespace DistributedSystemsStreamerSite.Controllers
     {
         static List<Video> videos = new List<Video>();
 
+        public VideoController()
+        {
+        }
+
         public VideoController(List<Video> newVideos)
         {
             videos = newVideos;
@@ -26,7 +30,7 @@ namespace DistributedSystemsStreamerSite.Controllers
         // GET api/video/{id}
         public Video Get(int id)
         {
-            Video video = videos.Where(x => x.Id == id) as Video;
+            Video video = videos.Single(x => x.Id == id) as Video;
 
             return video ?? null;
         }
