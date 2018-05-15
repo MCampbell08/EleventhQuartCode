@@ -44,7 +44,7 @@ namespace DistributedSystemsStreamerSite.Controllers.Tests
         [TestMethod()]
         public void GetByUserIdTest()
         {
-            List<Video> videos = TestData().Where(x => x.UserId == 0) as List<Video>;
+            List<Video> videos = TestData().FindAll(x => x.UserId == 0) as List<Video>;
             List<Video> pulledVideos = videoController.GetByUserId(0) as List<Video>;
 
             Assert.IsNotNull(pulledVideos);
@@ -62,18 +62,41 @@ namespace DistributedSystemsStreamerSite.Controllers.Tests
         {
             List<Video> videos = TestData();
             videos.Add(new Video() { Id = 3, Path = "fourthVideoPath", UserId = 2 });
+            videoController.Post(new Video() { Id = 3, Path = "fourthVideoPath", UserId = 2 });
+
+            Video video = videoController.Get(3);
+
+            Assert.IsNotNull(video);
+            Assert.AreEqual(video.Id, videos.Last().Id);
+            Assert.AreEqual(video.UserId, videos.Last().UserId);
+            Assert.AreEqual(video.Path, videos.Last().Path);
         }
 
         [TestMethod()]
         public void PutTest()
         {
-            Assert.Fail();
+            Video oldTestCase = videoController.Get().Last();
+            oldTestCase = new Video() { Id = oldTestCase.Id, UserId = oldTestCase.UserId, Path = oldTestCase.Path };
+            Video newTestCase = new Video() { Id = 3, UserId = 5, Path = "changePath" };
+
+            videoController.Put(oldTestCase.Id, newTestCase);
+
+            Assert.IsNotNull(oldTestCase);
+            Assert.IsNotNull(newTestCase);
+            Assert.AreNotEqual(oldTestCase.Path, videoController.Get().Last().Path);
+            Assert.AreNotEqual(oldTestCase.UserId, videoController.Get().Last().UserId);
         }
 
         [TestMethod()]
         public void DeleteTest()
         {
-            Assert.Fail();
+            Video deletedVideo = videoController.Get().Last();
+
+            videoController.Delete(deletedVideo.Id);
+
+            Assert.AreNotEqual(deletedVideo.Id, videoController.Get().Last().Id);
+            Assert.AreNotEqual(deletedVideo.Path, videoController.Get().Last().Path);
+            Assert.AreNotEqual(deletedVideo.UserId, videoController.Get().Last().UserId);
         }
         public static List<Video> TestData()
         {

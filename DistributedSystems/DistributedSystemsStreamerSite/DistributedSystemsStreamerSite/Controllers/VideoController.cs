@@ -38,7 +38,7 @@ namespace DistributedSystemsStreamerSite.Controllers
         // GET api/video/user/{userId}
         public IEnumerable<Video> GetByUserId(int userId)
         {
-            List<Video> tempVideos = videos.Where(x => x.UserId == userId) as List<Video>;
+            List<Video> tempVideos = videos.FindAll(x => x.UserId == userId) as List<Video>;
 
             return tempVideos;
         }
