@@ -1,0 +1,11 @@
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\obj\Debug\netcoreapp2.0\StreamerSite.API.csproj.CoreCompileInputs.cache
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\obj\Debug\netcoreapp2.0\StreamerSite.API.AssemblyInfoInputs.cache
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\obj\Debug\netcoreapp2.0\StreamerSite.API.AssemblyInfo.cs
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\bin\Debug\netcoreapp2.0\StreamerSite.API.deps.json
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\bin\Debug\netcoreapp2.0\StreamerSite.API.runtimeconfig.json
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\bin\Debug\netcoreapp2.0\StreamerSite.API.runtimeconfig.dev.json
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\bin\Debug\netcoreapp2.0\StreamerSite.API.dll
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\bin\Debug\netcoreapp2.0\StreamerSite.API.pdb
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\obj\Debug\netcoreapp2.0\StreamerSite.API.dll
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\obj\Debug\netcoreapp2.0\StreamerSite.API.pdb
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite\obj\Debug\netcoreapp2.0\StreamerSite.API.csprojResolveAssemblyReference.cache

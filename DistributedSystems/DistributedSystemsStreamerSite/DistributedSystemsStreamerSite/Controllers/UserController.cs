@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DistributedSystemsStreamerSite.Models;
-using System.Web.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DistributedSystemsStreamerSite.Controllers
 {
-    public class UserController : ApiController
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    public class UserController : ControllerBase    
     {
         static List<User> users = new List<User>();
-        
-        public UserController()
-        {
-
-        }
 
         public UserController(List<User> newUsers)
         {
@@ -73,7 +70,7 @@ namespace DistributedSystemsStreamerSite.Controllers
             existingUser.FollowerCount = newUser.FollowerCount;
             existingUser.SubscriberCount = newUser.SubscriberCount;
             existingUser.PageViewCount = newUser.PageViewCount;
-            existingUser.Name = newUser.Name;
+            existingUser.Username = newUser.Username;
         }
     }
 }

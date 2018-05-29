@@ -1,0 +1,16 @@
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\StreamerSite.API.Tests.deps.json
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\StreamerSite.API.Tests.runtimeconfig.json
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\StreamerSite.API.Tests.runtimeconfig.dev.json
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\StreamerSite.API.Tests.dll
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\StreamerSite.API.Tests.pdb
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\obj\Debug\netcoreapp2.0\StreamerSite.API.Tests.csprojResolveAssemblyReference.cache
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\obj\Debug\netcoreapp2.0\StreamerSite.API.Tests.csproj.CoreCompileInputs.cache
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\obj\Debug\netcoreapp2.0\StreamerSite.API.Tests.AssemblyInfoInputs.cache
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\obj\Debug\netcoreapp2.0\StreamerSite.API.Tests.AssemblyInfo.cs
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\obj\Debug\netcoreapp2.0\StreamerSite.API.Tests.dll
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\obj\Debug\netcoreapp2.0\StreamerSite.API.Tests.pdb
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\StreamerSite.API.dll
+C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\bin\Debug\netcoreapp2.0\StreamerSite.API.pdb
