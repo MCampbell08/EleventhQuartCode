@@ -17,9 +17,9 @@ namespace StreamerSite.API.Tests.Controllers
         private static UserController userController = new UserController();
         private static List<UserDetail> userDetails = new List<UserDetail>()
         {
-            new UserDetail() { FollowerCount = 10, PageViewCount = 100, SubscriberCount = 0, Username = "Bob", Password = "bobPass" },
-            new UserDetail() { FollowerCount = 20, PageViewCount = 150, SubscriberCount = 5, Username = "Joe", Password = "joePass" },
-            new UserDetail() { FollowerCount = 50, PageViewCount = 1000, SubscriberCount = 0, Username = "Amber", Password = "amberPass" },
+            new UserDetail() { FollowerCount = 10, PageViewCount = 100, SubscriberCount = 0, Username = "Bob", Password = "bobPass", Email = "bob@gmail.com" },
+            new UserDetail() { FollowerCount = 20, PageViewCount = 150, SubscriberCount = 5, Username = "Joe", Password = "joePass", Email = "joe@gmail.com" },
+            new UserDetail() { FollowerCount = 50, PageViewCount = 1000, SubscriberCount = 0, Username = "Amber", Password = "amberPass", Email = "amber@gmail.com" },
         };
         private List<User> users = new List<User>() {
                 new User(){ Username = "Bob"  },
@@ -31,9 +31,9 @@ namespace StreamerSite.API.Tests.Controllers
         [TestInitialize]
         public void InitializeUserController()
         {
-            userController.Post(new UserDetail() { FollowerCount = 10, PageViewCount = 100, SubscriberCount = 0, Username = "Bob",    Password = "bobPass"  });
-            userController.Post(new UserDetail() { FollowerCount = 20, PageViewCount = 150, SubscriberCount = 5, Username = "Joe",    Password = "joePass"  });
-            userController.Post(new UserDetail() { FollowerCount = 50, PageViewCount = 1000, SubscriberCount = 0, Username = "Amber", Password = "amberPass"});
+            userController.Post(new UserDetail() { FollowerCount = 10, PageViewCount = 100, SubscriberCount = 0, Username = "Bob", Password = "bobPass", Email = "bob@gmail.com"});
+            userController.Post(new UserDetail() { FollowerCount = 20, PageViewCount = 150, SubscriberCount = 5, Username = "Joe", Password = "joePass", Email = "joe@gmail.com"});
+            userController.Post(new UserDetail() { FollowerCount = 50, PageViewCount = 1000, SubscriberCount = 50, Username = "Amber", Password = "amberPass", Email = "amber@gmail.com"});
         }
 
         [TestMethod()]
@@ -68,15 +68,13 @@ namespace StreamerSite.API.Tests.Controllers
         public void PostTest()
         {
             UserDetail lastUser = userController.Get(userController.Get().Last().Id);
-            userController.Post(new UserDetail() {FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Username = "Toby" });
+            userController.Post(new UserDetail() {FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Username = "Toby", Email = "toby@gmail.com" });
             UserDetail newLastUser = userController.Get(userController.Get().Last().Id);
 
             Assert.IsNotNull(lastUser);
             Assert.IsNotNull(newLastUser);
             Assert.AreNotEqual(newLastUser.Username, lastUser.Username);
-            Assert.AreNotEqual(newLastUser.FollowerCount, lastUser.FollowerCount);
-            Assert.AreNotEqual(newLastUser.PageViewCount, lastUser.PageViewCount);
-            Assert.AreNotEqual(newLastUser.SubscriberCount, lastUser.SubscriberCount);
+            Assert.AreNotEqual(newLastUser.Email, lastUser.Email);
 
             RemoveTestData();
         }
@@ -86,16 +84,14 @@ namespace StreamerSite.API.Tests.Controllers
         {
             UserDetail oldTestCase = userController.Get(userController.Get().Last().Id); //new User() { Id = 3, FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Name = "Toby" }
             oldTestCase = new UserDetail() { Id = oldTestCase.Id, FollowerCount = oldTestCase.FollowerCount, PageViewCount = oldTestCase.PageViewCount, SubscriberCount = oldTestCase.SubscriberCount, Username = oldTestCase.Username};
-            UserDetail newTestCase = new UserDetail() { FollowerCount = 100, PageViewCount = 5000, SubscriberCount = 6, Username = "Tobias" };
+            UserDetail newTestCase = new UserDetail() { FollowerCount = 100, PageViewCount = 5000, SubscriberCount = 6, Username = "Tobias", Email = "tobias@gmail.com" };
 
             userController.Put(oldTestCase.Id, newTestCase);
 
             Assert.IsNotNull(oldTestCase);
             Assert.IsNotNull(newTestCase);
-            Assert.AreNotEqual(oldTestCase.FollowerCount, userController.Get(userController.Get().Last().Id).FollowerCount);
-            Assert.AreNotEqual(oldTestCase.PageViewCount, userController.Get(userController.Get().Last().Id).PageViewCount);
-            Assert.AreNotEqual(oldTestCase.SubscriberCount, userController.Get(userController.Get().Last().Id).SubscriberCount);
             Assert.AreNotEqual(oldTestCase.Username, userController.Get(userController.Get().Last().Id).Username);
+            Assert.AreNotEqual(oldTestCase.Email, userController.Get(userController.Get().Last().Id).Email);
 
             RemoveTestData();
         }
@@ -109,9 +105,7 @@ namespace StreamerSite.API.Tests.Controllers
 
             Assert.AreNotEqual(deletedUser.Id, userController.Get(userController.Get().Last().Id).Id);
             Assert.AreNotEqual(deletedUser.Username, userController.Get(userController.Get().Last().Id).Username);
-            Assert.AreNotEqual(deletedUser.FollowerCount, userController.Get(userController.Get().Last().Id).FollowerCount);
-            Assert.AreNotEqual(deletedUser.SubscriberCount, userController.Get(userController.Get().Last().Id).SubscriberCount);
-            Assert.AreNotEqual(deletedUser.PageViewCount, userController.Get(userController.Get().Last().Id).PageViewCount);
+            Assert.AreNotEqual(deletedUser.Email, userController.Get(userController.Get().Last().Id).Email);
 
             RemoveTestData();
         }

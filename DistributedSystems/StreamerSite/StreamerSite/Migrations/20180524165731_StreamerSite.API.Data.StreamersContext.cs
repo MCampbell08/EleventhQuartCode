@@ -17,9 +17,10 @@ namespace StreamerSite.API.Migrations
                     Admin = table.Column<bool>(nullable: false),
                     FollowerCount = table.Column<int>(nullable: false),
                     PageViewCount = table.Column<int>(nullable: false),
-                    Password = table.Column<string>(type: "TEXT", maxLength: 14, nullable: false),
+                    Password = table.Column<string>(type: "TEXT", maxLength: 14, nullable: true),
                     SubcriberCount = table.Column<int>(nullable: false),
-                    Username = table.Column<string>(type: "TEXT", maxLength: 25, nullable: false)
+                    Username = table.Column<string>(type: "TEXT", maxLength: 25, nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

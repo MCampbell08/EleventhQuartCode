@@ -24,6 +24,8 @@ namespace StreamerSite.API.Models
         [Column("Username", TypeName = "TEXT")]
         [StringLength(25, ErrorMessage = "Username cannot be greater than 25 characters."), MinLength(1)]
         public string Username { get; set; }
+        [Column("Email", TypeName = "TEXT")]
+        public string Email { get; set; }
         [Column("Password", TypeName = "TEXT")]
         [StringLength(14, ErrorMessage = "Password cannot be greater than 14 characters"), MinLength(8)]
         public string Password { get; set; }
