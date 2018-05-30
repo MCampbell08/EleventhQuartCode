@@ -19,7 +19,7 @@ namespace StreamerSite.API.Repositories
         public ICollection<User> GetAllUsers()
         {
             var users = new List<User>();
-            foreach(UserDetail u in context.Users.AsEnumerable())
+            foreach (UserDetail u in context.Users.AsEnumerable())
             {
                 users.Add(new User() { Id = u.Id, Username = u.Username });
             }
@@ -68,7 +68,7 @@ namespace StreamerSite.API.Repositories
                 oldUser.PageViewCount = newUser.PageViewCount;
                 oldUser.Username = newUser.Username;
 
-                context.SaveChanges();
+                userId = context.SaveChanges();
             }
             return userId;
         }
@@ -77,11 +77,33 @@ namespace StreamerSite.API.Repositories
             int userId = 0;
             UserDetail user = GetUserById(id);
 
-            if (user != null) {
+            if (user != null)
+            {
                 context.Remove(user);
                 userId = context.SaveChanges();
             }
             return userId;
-        }        
+        }
+        public void UpdatePassword(UserPasswordModify userModify)
+        {
+            UserDetail dbUser = context.Users.FirstOrDefault(u => u.Id == userModify.UserId);
+
+            if (dbUser.Password != null)
+            {
+                if (userModify.Password.Equals(dbUser.Password))
+                {
+                    throw new Exception("Cannot update with same password.");
+                }
+            }
+
+            if (userModify.Password == "" || userModify.Password == null)
+            {
+                throw new NullReferenceException("Password cannot be null.");
+            }
+
+            dbUser.Password = userModify.Password;
+
+            context.SaveChanges();
+        }
     }
 }

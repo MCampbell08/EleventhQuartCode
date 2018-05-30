@@ -14,10 +14,7 @@ namespace StreamerSite.API.Controllers
     public class UserController : Controller
     {
         private UserRepository _repo;
-        public UserController()
-        {
-            _repo = new UserRepository(new Data.StreamersContext());
-        }
+
         public UserController(UserRepository repo)
         {
             _repo = repo;
@@ -45,12 +42,21 @@ namespace StreamerSite.API.Controllers
         }
 
         // PUT api/user/{id}
+        [HttpPut]
         public void Put(int id, [FromBody]UserDetail streamer)
         {
             _repo.UpdateUser(id, streamer);
         }
 
+        // PUT api/user/UpdatePassword/{id}
+        [HttpPut("UpdatePassword/{id}")]
+        public void UpdatePassword(int id, [FromBody] UserPasswordModify user)
+        {
+            _repo.UpdatePassword(user);
+        }
+
         // DELETE api/user/{id}
+        [HttpDelete]
         public void Delete(int id)
         {
             _repo.DeleteUser(id);

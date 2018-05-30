@@ -25,17 +25,22 @@ namespace StreamerSite.API.Repositories
         }
         public ICollection<Video> GetAllByUserId(int userId)
         {
-            return context.Videos.Where(v => v.User.Id == userId) as ICollection<Video>;
+            return context.Videos.Where(v => v.UserId == userId) as ICollection<Video>;
         }
-        public void AddVideo(Video video)
+        public long AddVideo(Video video)
         {
-            if (video != null)
+            int videoId = 0;
+            if (video == null)
             {
-                context.Add(video);
+                throw new NullReferenceException("Video added is null.");
             }
+            context.Add(video);
+            videoId = context.SaveChanges();
+            return videoId;
         }
-        public void UpdateVideo(int id, Video newVideo)
+        public long UpdateVideo(int id, Video newVideo)
         {
+            int videoId = 0;
             Video oldVideo = GetVideoById(id);
 
             if (oldVideo == null)
@@ -49,12 +54,23 @@ namespace StreamerSite.API.Repositories
             else
             {
                 oldVideo.Path = newVideo.Path;
-                oldVideo.User = newVideo.User;
+                oldVideo.UserId = newVideo.UserId;
+
+                videoId = context.SaveChanges();
             }
+            return videoId;
         }
-        public void DeleteVideo(int id)
+        public long DeleteVideo(int id)
         {
-            context.Remove(GetVideoById(id));
+            int videoId = 0;
+            Video video = GetVideoById(id);
+
+            if (video != null)
+            {
+                context.Remove(video);
+                videoId = context.SaveChanges();
+            }
+            return videoId;
         }
     }
 }

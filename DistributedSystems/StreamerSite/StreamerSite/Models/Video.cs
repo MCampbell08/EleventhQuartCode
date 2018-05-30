@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 namespace StreamerSite.API.Models
-{ 
+{
     [Table("Video")]
     public class Video
     {
@@ -16,6 +16,6 @@ namespace StreamerSite.API.Models
         [Column("Path")]
         public string Path { get; set; }
         [Column("User")]
-        public UserDetail User { get; set; }
+        public int UserId { get; set; }
     }
 }

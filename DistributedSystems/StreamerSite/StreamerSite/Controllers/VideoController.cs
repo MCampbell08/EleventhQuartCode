@@ -14,11 +14,7 @@ namespace StreamerSite.API.Controllers
     public class VideoController : Controller
     {
         private VideoRepository _repo;
-
-        public VideoController()
-        {
-            _repo = new VideoRepository(new Data.StreamersContext());
-        }
+        
         public VideoController(VideoRepository repo)
         {
             _repo = repo;
@@ -32,34 +28,35 @@ namespace StreamerSite.API.Controllers
         }
 
         // GET api/video/{id}
+        [HttpGet]
         public Video Get(int id)
         {
-            Video video = Get().Single(x => x.Id == id) as Video;
-
-            return video ?? null;
+            return _repo.GetVideoById(id);
         }
 
         // GET api/video/user/{userId}
+        [HttpGet]
         public IEnumerable<Video> GetByUserId(int userId)
         {
-            List<Video> tempVideos = Get().Where(x => x.User.Id == userId) as List<Video>;
-
-            return tempVideos;
+            return _repo.GetAllByUserId(userId);
         }
 
         // POST api/video
+        [HttpPost]
         public void Post([FromBody] Video video)
         {
             _repo.AddVideo(video);
         }
 
         //PUT api/video/{id}
+        [HttpPut]
         public void Put(int id, [FromBody] Video video)
         {
             _repo.UpdateVideo(id, video);
         }
 
         //DELETE api/video/{id}
+        [HttpDelete]
         public void Delete(int id)
         {
             _repo.DeleteVideo(id);

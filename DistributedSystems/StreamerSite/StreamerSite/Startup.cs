@@ -28,8 +28,8 @@ namespace StreamerSite.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<StreamersContext>();
-            services.AddSingleton(typeof(UserRepository));
-            services.AddSingleton(typeof(VideoRepository));
+            services.AddTransient(typeof(UserRepository));
+            services.AddTransient(typeof(VideoRepository));
             services.AddMvc();
         }
 
