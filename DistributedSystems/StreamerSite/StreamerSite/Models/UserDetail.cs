@@ -30,7 +30,7 @@ namespace StreamerSite.API.Models
         [StringLength(14, ErrorMessage = "Password cannot be greater than 14 characters"), MinLength(8)]
         public string Password { get; set; }
         [Column("Videos")]
-        public ICollection<Video> Videos { get; set; }
+        public virtual ICollection<Video> Videos { get; set; }
         public bool Admin { get; set; }
     }
 }

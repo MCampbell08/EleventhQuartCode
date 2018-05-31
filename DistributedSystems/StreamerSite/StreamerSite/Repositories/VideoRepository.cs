@@ -17,7 +17,7 @@ namespace StreamerSite.API.Repositories
         }
         public ICollection<Video> GetAllVideos()
         {
-            return context.Videos as ICollection<Video> ?? null;
+            return context.Videos.ToArray() ?? null;
         }
         public Video GetVideoById(int id)
         {
@@ -25,7 +25,7 @@ namespace StreamerSite.API.Repositories
         }
         public ICollection<Video> GetAllByUserId(int userId)
         {
-            return context.Videos.Where(v => v.UserId == userId) as ICollection<Video>;
+            return context.Videos.Where(v => v.UserId == userId).ToArray() ?? null;
         }
         public long AddVideo(Video video)
         {

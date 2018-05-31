@@ -44,7 +44,7 @@ namespace StreamerSite.API.Tests.Controllers
         }
 
         [TestMethod()]
-        public void PostTest()
+        public void PostUserTest()
         {
             UserDetail user = user = new UserDetail() { FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Username = "Toby", Email = "toby@gmail.com" };
 
@@ -56,7 +56,7 @@ namespace StreamerSite.API.Tests.Controllers
         }
 
         [TestMethod()]
-        public void PutTest()
+        public void PutUserTest()
         {
             UserDetail user = null;
             if (userController.Get().Count() <= 0)
@@ -100,6 +100,9 @@ namespace StreamerSite.API.Tests.Controllers
             UserDetail user = user = new UserDetail() { FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Username = "Toby", Email = "toby@gmail.com" };
             
             userController.Post(user);
+
+            Assert.IsNotNull(userController.Get(user.Id));
+
             userController.Delete(user.Id);
 
             Assert.IsNull(userController.Get(user.Id));

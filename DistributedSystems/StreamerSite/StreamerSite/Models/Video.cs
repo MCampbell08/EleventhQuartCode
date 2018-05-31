@@ -16,6 +16,6 @@ namespace StreamerSite.API.Models
         [Column("Path")]
         public string Path { get; set; }
         [Column("User")]
-        public int UserId { get; set; }
+        public virtual int UserId { get; set; }
     }
 }

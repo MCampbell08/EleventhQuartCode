@@ -26,6 +26,10 @@ namespace StreamerSite.API.Migrations
 
                     b.Property<bool>("Admin");
 
+                    b.Property<string>("Email")
+                        .HasColumnName("Email")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("FollowerCount")
                         .HasColumnName("FollowerCount");
 
@@ -59,20 +63,23 @@ namespace StreamerSite.API.Migrations
                     b.Property<string>("Path")
                         .HasColumnName("Path");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int?>("UserDetailId");
+
+                    b.Property<int>("UserId")
+                        .HasColumnName("User");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserDetailId");
 
                     b.ToTable("Video");
                 });
 
             modelBuilder.Entity("StreamerSite.API.Models.Video", b =>
                 {
-                    b.HasOne("StreamerSite.API.Models.UserDetail", "User")
+                    b.HasOne("StreamerSite.API.Models.UserDetail")
                         .WithMany("Videos")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserDetailId");
                 });
 #pragma warning restore 612, 618
         }
