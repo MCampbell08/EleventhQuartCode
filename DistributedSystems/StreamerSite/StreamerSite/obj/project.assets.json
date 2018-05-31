@@ -13634,7 +13634,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\WaffleDefender\\.nuget\\packages\\": {},
+    "C:\\Users\\waffl\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -13646,14 +13646,14 @@
       "projectUniqueName": "C:\\EleventhQuartCode\\DistributedSystems\\StreamerSite\\StreamerSite\\StreamerSite.API.csproj",
       "projectName": "StreamerSite.API",
       "projectPath": "C:\\EleventhQuartCode\\DistributedSystems\\StreamerSite\\StreamerSite\\StreamerSite.API.csproj",
-      "packagesPath": "C:\\Users\\WaffleDefender\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\waffl\\.nuget\\packages\\",
       "outputPath": "C:\\EleventhQuartCode\\DistributedSystems\\StreamerSite\\StreamerSite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\WaffleDefender\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\waffl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

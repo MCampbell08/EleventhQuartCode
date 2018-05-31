@@ -24,7 +24,7 @@ namespace StreamerSite.API.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseMySQL(@"Server=localhost;Port=3306;Database=streamersite;Uid=streamer;pwd=StreamerPassword;SslMode=None;");
+            options.UseMySQL(@"Server=localhost;Port=3306;Database=streamersite;Uid=root;pwd=1_Tails_4;SslMode=None;");
         }
     }
 }
