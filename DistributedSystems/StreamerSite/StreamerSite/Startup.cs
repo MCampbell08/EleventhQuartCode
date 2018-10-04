@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using StreamerSite.API.Data;
 using StreamerSite.API.Models;
 using StreamerSite.API.Repositories;
+using Microsoft.Owin.Security.OAuth;
+using StreamerSite.API.ExceptionHandler;
 
 namespace StreamerSite.API
 {
@@ -23,7 +25,7 @@ namespace StreamerSite.API
         }
              
         public IConfiguration Configuration { get; }
-
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -40,7 +42,7 @@ namespace StreamerSite.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseMiddleware(typeof(ErrorHandler));
             app.UseMvc();
         }
     }

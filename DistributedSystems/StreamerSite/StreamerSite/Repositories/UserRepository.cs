@@ -21,7 +21,7 @@ namespace StreamerSite.API.Repositories
             var users = new List<User>();
             foreach (UserDetail u in context.Users.AsEnumerable())
             {
-                users.Add(new User() { Id = u.Id, Username = u.Username });
+                users.Add(new User() { Id = u.Id, Username = u.Username, Email = u.Email });
             }
             return users ?? null;
         }
@@ -44,6 +44,8 @@ namespace StreamerSite.API.Repositories
             {
                 throw new Exception("This username already exists for a user.");
             }
+            user.AccessToken = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+
             context.Add(user);
             userId = context.SaveChanges();
             return userId;

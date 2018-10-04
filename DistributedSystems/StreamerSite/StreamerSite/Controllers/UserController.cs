@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Http;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,11 +7,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StreamerSite.API.Repositories;
 using StreamerSite.API.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Net.Http;
 
 namespace StreamerSite.API.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[controller]")]
+    [Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
     public class UserController : Controller
     {
         private UserRepository _repo;
@@ -19,47 +22,121 @@ namespace StreamerSite.API.Controllers
         {
             _repo = repo;
         }
+        
+        [Microsoft.AspNetCore.Mvc.HttpPost("Register")]
+        public void Register([Microsoft.AspNetCore.Mvc.FromBody]UserDetail streamer)
+        {
+            _repo.AddUser(streamer);
 
+            if (_repo.GetUserById(streamer.Id) != null)
+            {
+                Login(streamer);
+            }
+        }
+
+        [Microsoft.AspNetCore.Mvc.HttpGet("Login")]
+        public void Login([Microsoft.AspNetCore.Mvc.FromBody]UserDetail streamer)
+        {
+            Console.WriteLine("");
+        }
+        
         // GET api/user
-        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.HttpGet]
         public IEnumerable<User> Get()
         {
+            if (!BearerTokenPass())
+                return null;
+
             return _repo.GetAllUsers();
         }
 
         // GET api/user/{id}
-        [HttpGet]
+        [Microsoft.AspNetCore.Mvc.HttpGet("{id}")]
         public UserDetail Get(int id)
         {
+            if (!BearerTokenPass())
+                return null;
+
             return _repo.GetUserById(id);
         }
 
-        // POST api/user
-        [HttpPost]
-        public void Post([FromBody]UserDetail streamer)
+        // PUT api/user/{id}
+        [Microsoft.AspNetCore.Mvc.HttpPut]
+        public void Put(int id, [Microsoft.AspNetCore.Mvc.FromBody]UserDetail streamer)
         {
-            _repo.AddUser(streamer);
+            if (!BearerTokenPass())
+            {
+                _repo.UpdateUser(id, streamer);
+            }
         }
 
         // PUT api/user/{id}
-        [HttpPut]
-        public void Put(int id, [FromBody]UserDetail streamer)
+        [Microsoft.AspNetCore.Mvc.HttpPut("ChangeAdmin")]
+        public void ChangeAdmin(int id, [Microsoft.AspNetCore.Mvc.FromBody]bool admin)
         {
-            _repo.UpdateUser(id, streamer);
+            if (!BearerTokenPass())
+            {
+                UserDetail streamer = _repo.GetUserById(id);
+                streamer.Admin = admin;
+                _repo.UpdateUser(id, streamer);
+            }
         }
 
         // PUT api/user/UpdatePassword/{id}
-        [HttpPut("UpdatePassword/{id}")]
-        public void UpdatePassword(int id, [FromBody] UserPasswordModify user)
+        [Microsoft.AspNetCore.Mvc.HttpPut("UpdatePassword/{id}")]
+        public void UpdatePassword(int id, [Microsoft.AspNetCore.Mvc.FromBody] UserPasswordModify user)
         {
-            _repo.UpdatePassword(user);
+            if (!BearerTokenPass())
+            {
+                _repo.UpdatePassword(user);
+            }
         }
 
         // DELETE api/user/{id}
-        [HttpDelete]
+        [Microsoft.AspNetCore.Mvc.HttpDelete]
         public void Delete(int id)
         {
-            _repo.DeleteUser(id);
+            if (!BearerTokenPass())
+            {
+                if(IsAdmin())
+                { 
+                    _repo.DeleteUser(id);
+                }
+            }
+        }
+
+        private bool IsAdmin()
+        {
+            var list = _repo.GetAllUsers();
+            var userList = new List<UserDetail>();
+            foreach (User u in list)
+            {
+                userList.Add(_repo.GetUserById(u.Id));
+            }
+            if (userList.First(u => (("Bearer " + u.AccessToken) == this.HttpContext.Request.Headers["Authorization"].ToString())).Admin)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool BearerTokenPass()
+        {
+            var list = _repo.GetAllUsers();
+            var userList = new List<UserDetail>();
+            foreach (User u in list)
+            {
+                userList.Add(_repo.GetUserById(u.Id));
+            }
+            try
+            {
+                var userFound = userList.First(u => (("Bearer " + u.AccessToken) == this.HttpContext.Request.Headers["Authorization"].ToString()));
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new UnauthorizedAccessException("Unauthorized access");
+            }
+            return true;
         }
     }
 }

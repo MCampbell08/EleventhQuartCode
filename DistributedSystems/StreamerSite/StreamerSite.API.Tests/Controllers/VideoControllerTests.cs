@@ -1,8 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StreamerSite.API.Controllers;
 using StreamerSite.API.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -12,122 +15,105 @@ namespace StreamerSite.API.Tests
     public class VideoControllerTests
     {
         public static VideoController videoController = new VideoController(new Repositories.VideoRepository(new Data.StreamersContext()));
+        public static UserController userController = new UserController(new Repositories.UserRepository(new Data.StreamersContext()));
 
         [TestMethod()]
-        public void GetAllVideosTest()
-        {
-            Video video = null;
-
-            if (videoController.Get() == null || videoController.Get().Count() == 0)
-            {
-                video = new Video() { Path = "somePath", UserId = 67 };
-                videoController.Post(video);
-            }
-
-            Assert.IsNotNull(videoController.Get());
-
-            if (video != null)
-                videoController.Delete(video.Id);
-        }
-
-        [TestMethod()]
-        public void GetVideoByIdTest()
-        {
-            Video video = null;
-
-            if (videoController.Get() == null || videoController.Get().Count() == 0)
-            {
-                video = new Video() { Path = "somePath", UserId = 67};
-                videoController.Post(video);
-            }
-            Video pulledVideo = videoController.Get(videoController.Get().First().Id);
-
-            Assert.IsNotNull(pulledVideo);
-
-            if (video != null)
-                videoController.Delete(video.Id);
-        }
-
-        [TestMethod()]
-        public void GetAllVideosByUserIdTest()
+        public void GetAllVideosByUserId()
         {
             Video video1 = null, video2 = null, video3 = null;
+            UserDetail user = null, user2 = null;
 
-            if (videoController.Get() == null || videoController.Get().Count() == 0)
+            user = new UserDetail() { FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Username = "Toby", Email = "toby@gmail.com" };
+            user2 = new UserDetail() { FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Username = "Bob", Email = "bob@gmail.com" };
+            userController.Post(user);
+            userController.Post(user2);
+
+            FormFile file = null, file2 = null, file3 = null;
+            string id = "", id2 = "", id3 = "";
+            
+            using (BinaryReader reader = new BinaryReader(File.OpenRead(@"C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\TestData\test.mp4")))
             {
-                video1 = new Video() { Path = "testPath1", UserId = 62 };
-                video2 = new Video() { Path = "testPath2", UserId = 62 };
-                video3 = new Video() { Path = "testPath3", UserId = 65 };
+                file = new FormFile(reader.BaseStream, reader.BaseStream.Position, reader.BaseStream.Length, "test.mp4", "test.mp4");
+                file2 = new FormFile(reader.BaseStream, reader.BaseStream.Position, reader.BaseStream.Length, "test2.mp4", "test2.mp4");
+                file3 = new FormFile(reader.BaseStream, reader.BaseStream.Position, reader.BaseStream.Length, "test3.mp4", "test3.mp4");
+                id = videoController.AddMongoDBVideo(file);
+                id2 = videoController.AddMongoDBVideo(file2);
+                id3 = videoController.AddMongoDBVideo(file3);
+            };
 
-                videoController.Post(video1);
-                videoController.Post(video2);
-                videoController.Post(video3);
-            }
+            video1 = new Video() { Name = "testPath1", UserDetailId = user.Id, MongoId = id };
+            video2 = new Video() { Name = "testPath2", UserDetailId = user.Id, MongoId = id2 };
+            video3 = new Video() { Name = "testPath3", UserDetailId = user2.Id, MongoId = id3 };
 
-            var list = videoController.GetByUserId(62);
+            videoController.Post(video1);
+            videoController.Post(video2);
+            videoController.Post(video3);
+            
+            var videosList = videoController.GetByUserId(user.Id);
 
-            Assert.IsNotNull(list);
-            Assert.IsNotNull(list.ElementAt(0));
-            Assert.IsNotNull(list.ElementAt(1));
+            Assert.IsNotNull(videosList);
+            Assert.IsNotNull(videosList.First());
+            Assert.IsNotNull(videosList.Last());
 
-            if (video1 != null && video2 != null && video3 != null)
-            {
-                videoController.Delete(video1.Id);
-                videoController.Delete(video2.Id);
-                videoController.Delete(video3.Id);
-            }
+            videoController.Delete(id);
+            videoController.Delete(id2);
+            videoController.Delete(id3);
+
+            userController.Delete(user.Id);
+            userController.Delete(user2.Id);
         }
 
         [TestMethod()]
-        public void PostVideoTest()
+        public void PostMongoDBVideoTest()
         {
-            Video video = new Video() { Path = "testPath", UserId = 8};
+
+            UserDetail user = new UserDetail() { FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Username = "Toby", Email = "toby@gmail.com" };
+            FormFile file = null;
+            string id = "";
+
+            userController.Post(user);
+
+            using (BinaryReader reader = new BinaryReader(File.OpenRead(@"C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\TestData\test.mp4")))
+            {
+                file = new FormFile(reader.BaseStream, reader.BaseStream.Position, reader.BaseStream.Length, "test.mp4", "test.mp4");
+                id = videoController.AddMongoDBVideo(file);
+            };
+
+            Video video = new Video() { Name = "testPath", UserDetailId = user.Id, MongoId = id };
 
             videoController.Post(video);
 
-            Assert.IsNotNull(videoController.Get().Last().Id);
-
-            videoController.Delete(video.Id);
+            Assert.AreNotEqual(id, "");
+            Assert.IsNotNull(videoController.Get().Last());
+            
+            videoController.Delete(id);
+            userController.Delete(user.Id);
         }
 
-        [TestMethod()]
-        public void PutVideoTest()
-        {
-            Video video = null;
-            if (videoController.Get().Count() == 0 || videoController.Get() == null)
-            {
-                video = new Video() { Path = "testPath", UserId = 200 };
-                videoController.Post(video);
-            }
-            Video oldTestCase = videoController.Get(videoController.Get().Last().Id);
-            oldTestCase = new Video() { Id = oldTestCase.Id, Path = oldTestCase.Path, UserId = oldTestCase.UserId };
-            Video newTestCase = new Video() { Path = "updatedTestPath", UserId = 201 };
-
-            videoController.Put(oldTestCase.Id, newTestCase);
-
-            Assert.IsNotNull(oldTestCase);
-            Assert.IsNotNull(newTestCase);
-            Assert.AreEqual(oldTestCase.Id, videoController.Get(videoController.Get().Last().Id).Id);
-            Assert.AreNotEqual(oldTestCase.Path, videoController.Get(videoController.Get().Last().Id).Path);
-            Assert.AreNotEqual(oldTestCase.UserId, videoController.Get(videoController.Get().Last().Id).UserId);
-
-            if (video != null)
-            {
-                videoController.Delete(video.Id);
-            }
-        }
         [TestMethod()]
         public void DeleteVideoTest()
         {
-            Video video = new Video() { Path = "testPath", UserId = 8 };
+            UserDetail user = new UserDetail() { FollowerCount = 40, PageViewCount = 200, SubscriberCount = 0, Username = "Toby", Email = "toby@gmail.com" };
+            userController.Post(user);
+
+            FormFile file = null;
+            string id = "";
+            using (BinaryReader reader = new BinaryReader(File.OpenRead(@"C:\EleventhQuartCode\DistributedSystems\StreamerSite\StreamerSite.API.Tests\TestData\test.mp4")))
+            {
+                file = new FormFile(reader.BaseStream, reader.BaseStream.Position, reader.BaseStream.Length, "test.mp4", "test.mp4");
+                id = videoController.AddMongoDBVideo(file);
+            };
+
+            Video video = new Video() { Name = "testPath", UserDetailId = user.Id, MongoId = id };
 
             videoController.Post(video);
 
-            Assert.IsNotNull(videoController.Get(video.Id));
+            Assert.IsNotNull(videoController.Get(id));
 
-            videoController.Delete(video.Id);
+            videoController.Delete(id);
 
-            Assert.IsNull(videoController.Get(video.Id));
+            Assert.IsNull(videoController.Get(id));
+            userController.Delete(user.Id);
         }
     }
 }

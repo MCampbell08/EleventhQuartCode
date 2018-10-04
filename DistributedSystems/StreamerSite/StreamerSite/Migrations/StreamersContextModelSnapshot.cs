@@ -60,13 +60,13 @@ namespace StreamerSite.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Id");
 
-                    b.Property<string>("Path")
-                        .HasColumnName("Path");
+                    b.Property<string>("Name")
+                        .HasColumnName("Name");
 
                     b.Property<int?>("UserDetailId");
 
                     b.Property<int>("UserId")
-                        .HasColumnName("User");
+                        .HasColumnName("UserId");
 
                     b.HasKey("Id");
 

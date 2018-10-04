@@ -1,7 +1,12 @@
-﻿using StreamerSite.API.Data;
+﻿using Microsoft.AspNetCore.Http;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
+using StreamerSite.API.Data;
 using StreamerSite.API.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,22 +15,55 @@ namespace StreamerSite.API.Repositories
     public class VideoRepository
     {
         StreamersContext context;
+        MongoGridFsUtilizer mongoGridFsUtilizer;
 
         public VideoRepository(StreamersContext ctx)
         {
             context = ctx;
+            mongoGridFsUtilizer = new MongoGridFsUtilizer();
         }
-        public ICollection<Video> GetAllVideos()
+        public ICollection<MongoVideoModel> GetAllVideos()
         {
-            return context.Videos.ToArray() ?? null;
+            //return context.Videos.ToArray() ?? null;
+            var videoCollection = mongoGridFsUtilizer.GetVideoCollection();
+            var videoCursor = videoCollection.FindAll();
+
+            videoCursor.SetFields(Fields.Include("_id", "FileName", "UserId", "VideoId"));
+
+            return videoCursor.ToList() ?? null;
         }
-        public Video GetVideoById(int id)
+        public MongoVideoModel GetVideoById(string id)
         {
-            return context.Videos.FirstOrDefault(u => u.Id == id) ?? null;
+            var videoCollection = mongoGridFsUtilizer.GetVideoCollection();
+            var video = videoCollection.FindOneById(ObjectId.Parse(id));
+
+            return video;
+            //return context.Videos.FirstOrDefault() ?? null;
         }
-        public ICollection<Video> GetAllByUserId(int userId)
+        public ICollection<MongoVideoModel> GetAllByUserId(int id)
         {
-            return context.Videos.Where(v => v.UserId == userId).ToArray() ?? null;
+            var userIds = GetMongoIdsByUserId(id);
+            var collection = mongoGridFsUtilizer.GetVideoCollection();
+            List<MongoVideoModel> mongoVideos = new List<MongoVideoModel>();
+
+            foreach(string s in userIds)
+            {
+                mongoVideos.Add(collection.FindOneById(ObjectId.Parse(s)));
+            }
+
+            return mongoVideos ?? null;
+        }
+        public ICollection<string> GetMongoIdsByUserId(int id)
+        {
+            var list = new List<string>();
+            var videosList = context.Videos.ToList().FindAll(v => v.UserDetailId == id);
+
+            foreach (Video v in videosList)
+            {
+                list.Add(v.MongoId);
+            }
+
+            return list.ToList() ?? null;
         }
         public long AddVideo(Video video)
         {
@@ -34,43 +72,43 @@ namespace StreamerSite.API.Repositories
             {
                 throw new NullReferenceException("Video added is null.");
             }
+            if (!context.Users.Any(x => x.Id == video.UserDetailId))
+            {
+                throw new Exception("There is no user existing in this table that matches that id.");
+            }
+
             context.Add(video);
             videoId = context.SaveChanges();
             return videoId;
         }
-        public long UpdateVideo(int id, Video newVideo)
+
+        public string AddMongoDBVideo(IFormFile file)
         {
-            int videoId = 0;
-            Video oldVideo = GetVideoById(id);
+            MongoVideoModel mongoVideo = new MongoVideoModel() { FileName = file.FileName };
+            
+            byte[] theVideoAsBytes = new byte[file.Length];
+            using (BinaryReader reader = new BinaryReader(file.OpenReadStream()))
+            {
+                theVideoAsBytes = reader.ReadBytes((int)file.Length);
+            };
+            mongoVideo.VideoDataAsString = Convert.ToBase64String(theVideoAsBytes);
+            mongoGridFsUtilizer.GetVideoCollection().Insert(mongoVideo);
 
-            if (oldVideo == null)
-            {
-                throw new ArgumentNullException("Video could not be found with that id.");
-            }
-            else if (newVideo == null)
-            {
-                throw new ArgumentNullException("Video cannot be null.");
-            }
-            else
-            {
-                oldVideo.Path = newVideo.Path;
-                oldVideo.UserId = newVideo.UserId;
-
-                videoId = context.SaveChanges();
-            }
-            return videoId;
+            return mongoVideo._id.ToString();
         }
-        public long DeleteVideo(int id)
+        public string DeleteVideo(string id)
         {
-            int videoId = 0;
-            Video video = GetVideoById(id);
+            var videoCollection = mongoGridFsUtilizer.GetVideoCollection();
+            MongoVideoModel mongoVideo = videoCollection.FindOneById(ObjectId.Parse(id));
+            Video video = context.Videos.ToList().FirstOrDefault(v => v.MongoId == id);
 
-            if (video != null)
+            if (mongoVideo != null && video != null)
             {
+                videoCollection.Remove(Query.EQ("_id", ObjectId.Parse(id)));
                 context.Remove(video);
-                videoId = context.SaveChanges();
+                context.SaveChanges();
             }
-            return videoId;
+            return id;
         }
     }
 }

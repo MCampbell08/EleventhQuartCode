@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,9 +14,11 @@ namespace StreamerSite.API.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("Id")]
         public int Id { get; set; }
-        [Column("Path")]
-        public string Path { get; set; }
-        [Column("User")]
-        public virtual int UserId { get; set; }
+        [Column("Name")]
+        public string Name { get; set; }
+        [Column("UserDetailId")]
+        public int UserDetailId { get; set; }
+        [Column("MongoId")]
+        public string MongoId { get; set; }
     }
 }

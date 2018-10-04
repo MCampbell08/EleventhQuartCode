@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StreamerSite.API.Repositories;
 using StreamerSite.API.Models;
+using MongoDB.Bson;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StreamerSite.API.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [Authorize]
     public class VideoController : Controller
     {
         private VideoRepository _repo;
@@ -22,23 +25,23 @@ namespace StreamerSite.API.Controllers
 
         // GET api/video
         [HttpGet]
-        public IEnumerable<Video> Get()
+        public IEnumerable<MongoVideoModel> Get()
         {
             return _repo.GetAllVideos();
         }
 
         // GET api/video/{id}
         [HttpGet]
-        public Video Get(int id)
+        public MongoVideoModel Get(string id)
         {
             return _repo.GetVideoById(id);
         }
 
         // GET api/video/user/{userId}
-        [HttpGet]
-        public IEnumerable<Video> GetByUserId(int userId)
+        [HttpGet("user/{id}")]
+        public IEnumerable<MongoVideoModel> GetByUserId(int id)
         {
-            return _repo.GetAllByUserId(userId);
+            return _repo.GetAllByUserId(id);
         }
 
         // POST api/video
@@ -48,16 +51,14 @@ namespace StreamerSite.API.Controllers
             _repo.AddVideo(video);
         }
 
-        //PUT api/video/{id}
-        [HttpPut]
-        public void Put(int id, [FromBody] Video video)
+        public string AddMongoDBVideo(IFormFile file)
         {
-            _repo.UpdateVideo(id, video);
+            return _repo.AddMongoDBVideo(file);
         }
 
         //DELETE api/video/{id}
         [HttpDelete]
-        public void Delete(int id)
+        public void Delete(string id)
         {
             _repo.DeleteVideo(id);
         }
